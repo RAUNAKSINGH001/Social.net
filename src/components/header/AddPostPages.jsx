@@ -1,31 +1,35 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate , useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import "react-toastify/dist/ReactToastify.css";
-function AddPostPages() {
-    const {id} = useParams();
+function AddPostPages({ userPath }) {
+
+  
+
   const [textContent, setTextContent] = useState("");
   const [videoContent, setVideoContent] = useState("");
   const [imageContent, setImageContent] = useState("");
   const [userId, setUserId] = useState("");
-  const url = `http://localhost:3000/users/raunaksingh`;
+  const url = `http://localhost:3000/users/${userPath}`;
+
   const addPostToApi = async (ele) => {
     ele.preventDefault();
-    let res = await fetch(url , {
-        method:"PATCH",
-        body : JSON.stringify({
-             textContent , videoContent , imageContent })
+    let res = await fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify({
+        textContent,
+        videoContent,
+        imageContent,
+      }),
     });
 
-    if(!res.ok)
-    {
-        throw new Error("Failed to add post .")
+    if (!res.ok) {
+      throw new Error("Failed to add post .");
     }
 
-    if(res)
-    {
-        alert("Post uploaded successfully.");
+    if (res) {
+      alert("Post uploaded successfully.");
     }
   };
   return (
@@ -33,7 +37,7 @@ function AddPostPages() {
       <h1 className="text-3xl text-slate-900 font-extrabold ">Add Post </h1>
       <div className="bg-slate-400 w-[40vw] h-[screen] rounded-2xl py-5 px-4">
         <form action="" className="flex flex-col items-center gap-3 pt-5">
-          <h1>ID : </h1>
+          <h1>ID : {userPath} </h1>
           <div className=" rounded-2xl flex flex-col items-center  justify-self-start gap-4 py-1 px-4 ">
             <label htmlFor="textcontent"> Text Content : </label>
             <input
