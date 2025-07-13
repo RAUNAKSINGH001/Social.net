@@ -12,6 +12,32 @@ function LoginPages() {
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState("");
   const [bio, setBio] = useState("");
+  const addToApi = async (ele) => {
+    ele.preventDefault();
+    const url = "http://localhost:3000/users";
+
+    let res = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        age,
+        address,
+        contact,
+        email,
+        profile,
+        bio,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to add new user.");
+    }
+
+    const data = await res.json();
+    if (data) {
+      alert("User added successfully.");
+    }
+  };
 
   return (
     <div className="flex  flex-col items-center w-full h-full gap-5 ">
@@ -102,8 +128,8 @@ function LoginPages() {
             />
           </div>
           <button
-            className="px-4 py-3 bg-slate-900 text-slate-50 rounded-2xl w-[6vw]"
-            onClick={(ele) => ele.preventDefault()}
+            className="px-4 py-3 bg-slate-900 active:scale-90 text-slate-50 rounded-2xl w-[6vw]"
+            onClick={addToApi}
           >
             Register
           </button>
