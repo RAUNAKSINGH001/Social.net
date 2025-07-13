@@ -12,6 +12,8 @@ function LoginPages() {
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState("");
   const [bio, setBio] = useState("");
+  const [id, setId] = useState("");
+
   const addToApi = async (ele) => {
     ele.preventDefault();
     const url = "http://localhost:3000/users";
@@ -19,6 +21,7 @@ function LoginPages() {
     let res = await fetch(url, {
       method: "POST",
       body: JSON.stringify({
+        id,
         name,
         age,
         address,
@@ -38,7 +41,11 @@ function LoginPages() {
       alert("User added successfully.");
     }
   };
-
+  useEffect(()=>
+  {
+    addToApi();
+  }
+  ,[{name}])
   return (
     <div className="flex  flex-col items-center w-full h-full gap-5 ">
       <h1 className="text-3xl text-slate-900 font-extrabold ">Register </h1>
@@ -53,6 +60,18 @@ function LoginPages() {
               className="  ml-3 focus:outline-none rounded-2xl bg-gray-200 h-[6vh] w-[30vw] border-1 border-gray-200 px-4"
               value={name}
               onChange={(ele) => setName(ele.target.value)}
+            />
+          </div>
+
+          <div className=" rounded-2xl flex items-center  justify-self-start gap-4 py-1 px-4 ">
+            <label htmlFor="id">User Id : </label>
+            <input
+              type="text"
+              id="id"
+              placeholder="Enter your id"
+              className="  ml-0 focus:outline-none rounded-2xl bg-gray-200 h-[6vh] w-[30vw] border-1 border-gray-200 px-4"
+              value={id}
+              onChange={(ele) => setId(ele.target.value)}
             />
           </div>
 

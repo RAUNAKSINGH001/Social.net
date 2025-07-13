@@ -1,9 +1,9 @@
 import React from 'react'
-
+import PeoplePages from '../components/header/PeoplePages'
 function People() {
   return (
     <div>
-      People
+      <PeoplePages/>
     </div>
   )
 }
