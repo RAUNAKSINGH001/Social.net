@@ -4,6 +4,7 @@ import { Instagram } from "lucide-react";
 import { Facebook } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Twitter } from "lucide-react";
+import {useState , useEffect} from 'react'
 
 function ProfileCard({ id, name, userPath, profile, bio }) {
   const navigate = useNavigate();
@@ -13,6 +14,35 @@ function ProfileCard({ id, name, userPath, profile, bio }) {
     localStorage.setItem("uid", userPath);
     navigate(`/AddPost/${userPath}`);
   };
+
+  const  removeCard = async (ele)=>
+  {
+      ele.preventDefault();
+  const url = `http://localhost:3000/users/${id}`;
+ let response= await fetch(url , {
+    method:"DELETE",
+  }
+)
+// .then((response)=>
+//   {
+//     if(!response.ok)
+//   {
+//     throw new Error("Card failde to delete.")
+//   }
+//   return response.json();
+// }
+// )
+// .then((data) => {
+//     console.log('Deleted:', data);
+//   })
+
+
+  
+  }
+  useEffect(()=>
+  {
+    removeCard();
+  },[])
   return (
     <>
       <div className="rounded-2xl relative border-2 border-gray-400 min-w-[18vw] min-h-[50vh] bg-amber-200">
@@ -49,12 +79,12 @@ function ProfileCard({ id, name, userPath, profile, bio }) {
           </div>
           <div className="flex gap-6">
             <button
-              className="text-sm px-4 py-0.5 rounded-2xl bg-blue-700"
+              className="text-sm px-4 py-0.5 rounded-2xl active:scale-90 bg-blue-700"
               onClick={handleAddPost}
             >
               Add Post
             </button>
-            <button className="text-sm px-4 py-0.5 rounded-2xl bg-red-700">
+            <button className="text-sm px-4 py-0.5 rounded-2xl active:scale-90 bg-red-700" onClick={removeCard}>
               Remove
             </button>
           </div>

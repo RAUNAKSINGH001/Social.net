@@ -16,7 +16,7 @@ function People() {
 
   useEffect(() => {
     peopleApi();
-  }, []);
+  }, [data]);
   return (
     <>
       <div className="flex items-center flex-col text-white w-full min-h-full gap-5">

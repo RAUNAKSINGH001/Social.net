@@ -15,13 +15,13 @@ const [data , setData] = useState([]);
   useEffect(()=>
   {
     fetchApi();
-  },[])
+  },[data])
   return (
     <div className="w-full min-h-screen  gap-0 flex flex-col items-center ">
       {
 data.map((data, idx)=>
 (
-  <div key={idx}>
+  <div key={data.id}>
         <HomePages name = {data.name}  id={data.id} imageContent={data.imageContent} textContent= {data.textContent} videoContent={data.videoContent} />
       </div>
 ))
