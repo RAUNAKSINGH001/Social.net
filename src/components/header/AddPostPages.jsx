@@ -34,8 +34,8 @@ function AddPostPages({ userPath }) {
   };
   return (
     <div className="flex  flex-col items-center w-full h-full gap-5 ">
-      <h1 className="text-3xl text-slate-900 font-extrabold ">Add Post </h1>
-      <div className="bg-slate-400 w-[40vw] h-[screen] rounded-2xl py-5 px-4">
+      <h1 className="text-3xl text-white font-extrabold ">Add Post </h1>
+      <div className="bg-black border-1 border-gray-400 w-[40vw] h-[screen] rounded-2xl py-5 px-4">
         <form action="" className="flex flex-col items-center gap-3 pt-5">
           <h1>ID : {userPath} </h1>
           <div className=" rounded-2xl flex flex-col items-center  justify-self-start gap-4 py-1 px-4 ">
@@ -44,7 +44,7 @@ function AddPostPages({ userPath }) {
               type="Textarea"
               id="textcontent"
               placeholder="Type..."
-              className="  ml-3 focus:outline-none rounded-2xl bg-gray-200 h-[6vh] w-[30vw] border-1 border-gray-200 px-4"
+              className="  ml-3 focus:outline-none rounded-2xl bg-black h-[6vh] w-[30vw] border-1 border-gray-400 px-4"
               value={textContent}
               onChange={(ele) => setTextContent(ele.target.value)}
             />
@@ -56,7 +56,7 @@ function AddPostPages({ userPath }) {
               type="url"
               id="imagecontent"
               placeholder="Type..."
-              className="  ml-3 focus:outline-none rounded-2xl bg-gray-200 h-[6vh] w-[30vw] border-1 border-gray-200 px-4"
+              className="  ml-3 focus:outline-none rounded-2xl bg-black h-[6vh] w-[30vw] border-1 border-gray-400 px-4"
               value={imageContent}
               onChange={(ele) => setImageContent(ele.target.value)}
             />
@@ -68,14 +68,14 @@ function AddPostPages({ userPath }) {
               type="url"
               id="videocontent"
               placeholder="Type..."
-              className="  ml-3 focus:outline-none rounded-2xl bg-gray-200 h-[6vh] w-[30vw] border-1 border-gray-200 px-4"
+              className="  ml-3 focus:outline-none rounded-2xl bg-black h-[6vh] w-[30vw] border-1 border-gray-400 px-4"
               value={videoContent}
               onChange={(ele) => setVideoContent(ele.target.value)}
             />
           </div>
 
           <button
-            className="px-4 py-3 bg-slate-900 active:scale-90 text-slate-50 rounded-2xl w-[6vw]"
+            className="px-4 py-3 hover:bg-gray-800 bg-black active:scale-90 text-white border-2 border-gray-400 rounded-2xl w-[6vw]"
             onClick={addPostToApi}
           >
             Upload

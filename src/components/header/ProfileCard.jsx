@@ -15,7 +15,7 @@ function ProfileCard({ id, name, userPath, profile, bio }) {
   };
   return (
     <>
-      <div className="rounded-2xl relative border-2 border-gray-200 min-w-[18vw] min-h-[50vh] bg-amber-200">
+      <div className="rounded-2xl relative border-2 border-gray-400 min-w-[18vw] min-h-[50vh] bg-amber-200">
         <div className="  rounded-t-2xl min-w-[18vw] max-h-[15vh]">
           <img
             className=" rounded-t-2xl object-cover w-[18vw] h-[15vh]"
@@ -23,7 +23,7 @@ function ProfileCard({ id, name, userPath, profile, bio }) {
             alt="profilePic"
           />
         </div>
-        <div className="rounded-b-2xl w-[18vw] h-[35vh] gap-2 pt-18 flex flex-col items-center bg-gray-800">
+        <div className="rounded-b-2xl w-[18vw] h-[35vh] gap-2 pt-18 flex flex-col items-center bg-gray-950">
           <h1 className="font-semibold text-2xl">{name}</h1>
           <h1 className="text-sm  text-gray-200 text-center">{bio}</h1>
           <div className=" absolute top-2/7 left-1/2 transform -translate-x-1/2 -translate-y-1/2  object-contain rounded-full bg-gray-200 p-2">
