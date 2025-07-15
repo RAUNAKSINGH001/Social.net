@@ -9,16 +9,19 @@ import {useState , useEffect} from 'react'
 function ProfileCard({ id, name, userPath, profile, bio }) {
   let addPostNavigate = useNavigate();
   let editProfileNavigate = useNavigate();
+  
   const handleAddPost = (ele) => {
     ele.preventDefault();
     localStorage.removeItem("uid");
     localStorage.setItem("uid", userPath);
     addPostNavigate(`/AddPost/${id}`);
+
   };
 
   const navigateToEditProfile = (ele)=>
   {
      ele.preventDefault();
+
                 editProfileNavigate(`/EditProfile/${userPath}`);
   }
   const  removeCard = async (ele)=>
@@ -29,11 +32,9 @@ function ProfileCard({ id, name, userPath, profile, bio }) {
     method:"DELETE",
   }
 )
+
   }
-  useEffect(()=>
-  {
-    removeCard();
-  },[])
+ 
   return (
     <>
       <div className="rounded-2xl relative border-2 border-gray-400 min-w-[18vw] min-h-[50vh] ">
@@ -78,7 +79,7 @@ function ProfileCard({ id, name, userPath, profile, bio }) {
             <button className="text-sm px-2 py-0.5 rounded-2xl active:scale-90 bg-red-700" onClick={removeCard}>
               Remove
             </button>
-            <button className="text-sm px-2 py-0.5 rounded-2xl active:scale-90 bg-red-700" onClick={navigateToEditProfile}>
+            <button className="text-sm px-2 py-0.5 rounded-2xl active:scale-90 bg-red-700"  onClick={navigateToEditProfile}>
               Edit Profile
             </button>
             

@@ -8,7 +8,7 @@ function EditPost() {
   const [textContent, setTextContent] = useState("");
   const [videoContent, setVideoContent] = useState("");
   const [imageContent, setImageContent] = useState("");
-
+const navigateToHome = useNavigate();
 
   const addPostToApi = async (ele) => {
     ele.preventDefault();
@@ -27,6 +27,8 @@ function EditPost() {
 
     if (res) {
       alert("Post uploaded successfully.");
+                  navigateToHome("/Home");
+
     }
   };
 

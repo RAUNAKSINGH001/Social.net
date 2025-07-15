@@ -13,7 +13,7 @@ function LoginPages() {
   const [profile, setProfile] = useState("");
   const [bio, setBio] = useState("");
   const [id, setId] = useState("");
-
+  const navigateToHome = useNavigate();
   const addToApi = async (ele) => {
     ele.preventDefault();
     const url = "http://localhost:3000/users";
@@ -31,7 +31,7 @@ function LoginPages() {
         bio,
       }),
     });
-
+navigateToHome("/Home");
     if (!res.ok) {
       throw new Error("Failed to add new user.");
     }
@@ -39,16 +39,17 @@ function LoginPages() {
     const data = await res.json();
     if (data) {
       alert("User added successfully.");
+      
     }
   };
-  useEffect(()=>
-  {
+  useEffect(() => {
     addToApi();
-  }
-  ,[{name}])
+  }, [{ name }]);
   return (
     <div className="flex  flex-col items-center w-full h-full gap-5 ">
-      <h1 className="text-3xl dark:text-white text-black font-extrabold ">Register </h1>
+      <h1 className="text-3xl dark:text-white text-black font-extrabold ">
+        Register{" "}
+      </h1>
       <div className="dark:bg-black bg-gray-200 border-1 border-gray-400 dark:border-gray-400 w-[40vw] h-[screen] rounded-2xl py-5 px-4">
         <form action="" className="flex flex-col items-center gap-3 pt-5">
           <div className=" rounded-2xl flex items-center  justify-self-start gap-4 py-1 px-4 ">

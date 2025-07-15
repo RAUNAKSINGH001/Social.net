@@ -17,7 +17,7 @@ function EditProfile() {
   const [profile, setProfile] = useState("");
   const [bio, setBio] = useState("");
   const [id, setId] = useState("");
-
+const navigateToHome = useNavigate();
    const fetchData = async (ele) => {
       let res = await fetch(url);
       res = await res.json();
@@ -58,6 +58,7 @@ const addToApi = async (ele) => {
 
     if (data) {
       alert("User updated successfully.");
+      navigateToHome("/Home");
     }
   }; 
   useEffect(() => {

@@ -12,7 +12,7 @@ function AddPostPages({ userPath }) {
   const [imageContent, setImageContent] = useState("");
   const [userId, setUserId] = useState("");
   const url = `http://localhost:3000/users/${userPath}`;
-
+  const navigateToHome = useNavigate();
   const addPostToApi = async (ele) => {
     ele.preventDefault();
     let res = await fetch(url, {
@@ -30,6 +30,7 @@ function AddPostPages({ userPath }) {
 
     if (res) {
       alert("Post uploaded successfully.");
+      navigateToHome("/Home");
     }
   };
   return (
