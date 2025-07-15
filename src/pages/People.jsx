@@ -16,10 +16,10 @@ function People() {
 
   useEffect(() => {
     peopleApi();
-  }, [data]);
+  }, []);
   return (
     <>
-      <div className="flex items-center flex-col text-white w-full min-h-full gap-5">
+      <div className="flex items-center flex-col text-gray-50 dark:text-white w-full min-h-full gap-5">
 
         {data.map((dataa, idx) => (
           <div key={idx}>

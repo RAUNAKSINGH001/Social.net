@@ -4,11 +4,17 @@ import { MessageCircleMore } from "lucide-react";
 import { Share } from "lucide-react";
 import { Eye } from "lucide-react";
 import { CircleEllipsis } from "lucide-react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link , useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function HomePages({ name, id, textContent, videoContent, imageContent }) {
   const [isDropdown, setIsDropdown] = useState(false);
+let editPostNavigate = useNavigate();
+  const editPost = (ele)=>
+  {
+    ele.preventDefault();
+    editPostNavigate(`/EditPost/${id}`)
+  }
   const deletePost = async (ele)=>
   {
     ele.preventDefault();
@@ -28,21 +34,21 @@ if(response)
       deletePost();
     },[])
   return (
-    <div className="w-[36vw] border-1 border-gray-400 h-[70vh] bg-black flex px-4 py-2 ">
-      <div className="w-[6vw] h-[68vh] rounded-2xl px-2 py-2 flex justify-center bg-black">
+    <div className="w-[36vw] border-1 border-gray-400 h-[70vh] bg-gray-100 dark:bg-black flex px-4 py-2 ">
+      <div className="w-[6vw] h-[68vh] rounded-2xl px-2 py-2 flex justify-center bg-gray-100 dark:bg-black">
         <img
           className="w-[4vw] h-[7vh] rounded-full "
           src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt="profilePictures"
         />
       </div>
-      <div className="bg-black w-[30vw] flex flex-col items-self-start h-[68vh] rounded-2xl py-1 ">
+      <div className="dark:bg-black bg-gray-100 w-[30vw] flex flex-col items-self-start h-[68vh] rounded-2xl py-1 ">
         <div className="flex gap-2 px-4">
-          <h1 className="text-gray-50 font-bold ">{name}</h1>
-          <h1 className="text-gray-400 ">{id}</h1>
+          <h1 className=" text-black dark:text-gray-50 font-bold ">{name}</h1>
+          <h1 className="text-gray-700 dark:text-gray-400 ">{id}</h1>
         </div>
 
-        <div className="w-[30vw] text-white text-justify h-auto px-4 py-2">
+        <div className="w-[30vw] text-black dark:text-white text-justify h-auto px-4 py-2">
           <h1 className="">{textContent}</h1>
         </div>
         {{ imageContent } ? (
@@ -63,7 +69,7 @@ if(response)
         ) : (
           ""
         )}
-        <div className="flex justify-between relative items-center rounded-2xl w-[30vw] text-gray-200 px-4 bg-black h-[8vh]">
+        <div className="flex justify-between relative items-center rounded-2xl w-[30vw] text-gray-700 dark:text-gray-200 px-4 bg-gray-100 dark:bg-black h-[8vh]">
           <div className="flex items-center flex-col">
             <Heart />
             <h1>1.1M</h1>
@@ -90,10 +96,11 @@ if(response)
           </div>
 
           {isDropdown && (
-              <div className=" absolute  rounded-2xl px-0.5 bottom-15 right-3.5 py-0.5 bg-black border-1 items-center border-gray-400 flex flex-col gap-1 ">
+              <div className=" absolute  rounded-2xl px-0.5 bottom-15 right-3.5 py-0.5 bg-gray-200 dark:bg-black border-1 items-center border-gray-400 flex flex-col gap-1 ">
                 <option
                   className="border-b-2 rounded-2xl px-2 py-0.5 border-gray-400 "
                   value="edit"
+                  onClick={editPost}
                 >
                   Edit
                 </option>
